@@ -1,11 +1,22 @@
 {{ define "main" }}
+{{ $date := .Date.Format "2006-01-02" }}
+{{ $lastmod := .Lastmod.Format "2006-01-02" }}
 	<main>
 		<article>
 			<h1>{{ .Title }}</h1>
-			<b><time>{{ .Date.Format (default "2006-01-02 15:04:05" .Site.Params.dateFmt) }}</time></b>
+			Originally posted on: <b><time>{{ .Date.Format (default "2006-01-02 15:04:05" .Site.Params.dateFmt) }}</time></b>
 		       {{ range .Params.tags }}
 		           <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
         	       {{ end }}
+			{{ if gt $lastmod $date }}
+                        </br>
+			Updated on: <b><time>{{ .Lastmod.Format (default "2006-01-02 15:04:05" .Site.Params.dateFmt) }}</time></b> {{ end }}
+
+			{{ if gt .WordCount 100 }}
+			{{ if or (not (isset .Params "include_toc")) .Params.include_toc }}
+			{{ .TableOfContents }}
+			{{ end }}
+			{{ end }}
 
 			<div>
 				{{ .Content }}
