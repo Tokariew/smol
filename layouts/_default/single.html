@@ -23,14 +23,17 @@
         </div>
     </article>
 </main>
+
+{{ if .Site.Params.Comment.set }}
 <script src="https://utteranc.es/client.js"
-        repo="tokariew/website"
-        issue-term="url"
-        label="[comment]"
-        theme="dark-blue"
+        repo="{{ .Site.Params.Comment.repo }}"
+        issue-term="{{ .Site.Params.Comment.issueterm }}"
+        label="{{ .Site.Params.Comment.label }}"
+        theme="{{ .Site.Params.Comment.theme }}"
         crossorigin="anonymous"
         async>
 </script>
+{{ end }}
 
 {{ partial "sidebar.html" . }}
 {{ end }}
