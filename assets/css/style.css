@@ -13,12 +13,12 @@ html {
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --bgcolor: black;
-        --fontcolor: white;
-        --linkcolor: #5bf;
-        --visitedcolor: #e94560;
-        --precolor: #fff;
-        --prebgcolor: #383838;
+        --bgcolor: #272822;
+        --fontcolor: #f8f8f2;
+        --linkcolor: #66d9ef;
+        --visitedcolor: #d54e53;
+        --precolor: #eaeaea;
+        --prebgcolor: #75715e;
     }
 }
 
@@ -74,6 +74,7 @@ article {
 figcaption {
     color: #888;
     font: 14px/1.5 monospace;
+    font-weight: bold;
     text-align: center;
 }
 
